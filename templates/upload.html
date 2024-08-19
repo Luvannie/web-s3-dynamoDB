@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Upload TXT File</title>
+  </head>
+  <body>
+    <h1>Upload TXT File to S3</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".txt">
+      <input type="submit" value="Upload">
+    </form>
+
+    <h2>Files in S3:</h2>
+    <ul>
+      {% for file in files %}
+        <li>{{ file }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
