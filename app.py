@@ -47,11 +47,9 @@ def upload_file():
             return "Only .txt files are allowed"
 
     # List all files in the S3 bucket
-    objects = s3_client.list_objects_v2(Bucket=S3_BUCKET)
-    file_list = []
-    if 'Contents' in objects:
-        for obj in objects['Contents']:
-            file_list.append(obj['Key'])
+     # List all files in DynamoDB
+    response = table.scan()
+    file_list = [item['key'] for item in response.get('Items', [])]
 
     return render_template('upload.html', files=file_list)
 

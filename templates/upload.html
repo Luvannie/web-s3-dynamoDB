@@ -12,9 +12,9 @@
       <input type="submit" value="Upload">
     </form>
 
-    <h2>Files in S3:</h2>
+    <h2>Files in DynamoDB</h2>
     <ul>
-      {% for file in files %}
+        {% for file in files %}
             <li><a href="{{ url_for('view_file', key=file) }}">{{ file }}</a></li>
         {% endfor %}
     </ul>
