@@ -9,8 +9,8 @@ app = Flask(__name__)
 S3_BUCKET = "cloud-internship-project3-s3"
 DYNAMO_TABLE = "S3MetadataTable"
 
-s3_client = boto3.client('s3')
-dynamodb = boto3.resource('dynamodb')
+s3_client = boto3.client('s3',region_name='ap-northeast-1')
+dynamodb = boto3.resource('dynamodb',region_name='ap-northeast-1')
 table = dynamodb.Table(DYNAMO_TABLE)
 
 
