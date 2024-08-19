@@ -26,7 +26,7 @@ def upload_file():
         
         if file and file.filename.endswith('.txt'):
             filename = file.filename
-            s3_key = f"uploads/{filename}"
+            s3_key = f"{filename}"
             
             # Upload file to S3
             s3_client.upload_fileobj(file, S3_BUCKET, s3_key)
@@ -54,6 +54,14 @@ def upload_file():
             file_list.append(obj['Key'])
 
     return render_template('upload.html', files=file_list)
+
+@app.route('/view/<path:key>', methods=['GET'])
+def view_file(key):
+    # Get the file content from S3
+    file_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=key)
+    file_content = file_obj['Body'].read().decode('utf-8')
+    
+    return render_template('view.html', file_content=file_content, filename=key)
 
 
 if __name__ == '__main__':
