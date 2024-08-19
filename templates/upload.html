@@ -15,8 +15,8 @@
     <h2>Files in S3:</h2>
     <ul>
       {% for file in files %}
-        <li>{{ file }}</li>
-      {% endfor %}
+            <li><a href="{{ url_for('view_file', key=file) }}">{{ file }}</a></li>
+        {% endfor %}
     </ul>
   </body>
 </html>
