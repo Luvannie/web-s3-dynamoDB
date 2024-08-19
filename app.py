@@ -38,7 +38,7 @@ def upload_file():
                 Item={
                     'key': s3_key,
                     'filename': filename,
-                    'S3Uri': s3_uri,
+                    's3Uri': s3_uri,
                     'uploadTime': upload_time
                 }
             )
